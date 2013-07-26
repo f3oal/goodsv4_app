@@ -19,19 +19,12 @@ ActiveRecord::Schema.define(version: 20130726202403) do
     t.datetime "updated_at"
   end
 
-  create_table "categorys", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "goods", force: true do |t|
     t.string   "name"
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "settings"
-    t.integer  "categorys_id"
+    t.integer  "categories_id"
   end
 
 end
