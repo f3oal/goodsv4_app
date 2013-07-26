@@ -14,7 +14,7 @@ describe Good do
   
   it 'should not be valid if name already taken' do	
     subject.save
-    good = Good..new(name: "Example", price: 123)
+    good = Good.new(name: "Example", price: 123)
     good.should_not be_valid 
   end
   
