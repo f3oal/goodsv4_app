@@ -19,8 +19,8 @@ describe Good do
   end
   
   it 'price should be valid only if greater than 0' do
-    subject.price = -1
+    subject.price = -2
     subject.should_not be_valid    
   end
-  
+   it  { subject.settings.should be_nill }
 end
