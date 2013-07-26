@@ -1,6 +1,6 @@
 class Good < ActiveRecord::Base
  
   validates :name, presence: true, uniqueness: true
-  validates :price, numericality: { greater_then: 0 }  
+  validates :price, numericality: { greater_than_or_equal_to: 0 }  
   
 end
