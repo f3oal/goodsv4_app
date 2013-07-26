@@ -1,0 +1,24 @@
+<h1>Goods table </h1>
+<br />
+
+<table align="center">
+	 <tr id="tr1">
+    <th>Name</th>
+    <th>Price</th>
+   </tr>
+
+<% @goods.each do |good| %>
+  <tr id="tr2">
+    <td ><%= good.name %></td>
+    <td ><%= good.price %></td>
+    <td ><%= link_to 'Destroy', good, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+  </table>
+ <br />
+
+<p align="center"> <%= link_to "Create record", create_path, class: "btn btn-large btn-primary" %></p>
+<br />
+
+
+
