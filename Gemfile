@@ -7,7 +7,7 @@ gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-gem 'rspec-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -29,13 +29,27 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+ group :development do
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
-gem 'capybara'
-gem 'factory_girl_rails'
+
+
+group :test do
+  gem 'zeus'
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'test_after_commit'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
