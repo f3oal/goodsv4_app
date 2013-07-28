@@ -13,6 +13,8 @@
   <tr id="tr2">
     <td ><%= good.name %></td>
     <td ><%= good.price %></td>
+<td ><a href= categories/<%= good.category_id %> ><%= good.category_name %></a></td>
+  </td>
     <td ><%= link_to 'Destroy', good, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>
