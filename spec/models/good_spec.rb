@@ -22,5 +22,5 @@ describe Good do
     subject.price = -2
     subject.should_not be_valid    
   end
-   it { should belong_to(:category)}
+  it { should belong_to(:category)}
 end

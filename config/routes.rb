@@ -1,10 +1,13 @@
 Goodsv4App::Application.routes.draw do
-  resources :goods
+  resources :goods, :categories
 
-  root 'goods#index'
+  root 'static_pages#home'
 
-  match '/table',   to: 'goods#index',  via: [:get]
-  match '/create',  to: 'goods#new',    via: [:get]
+  match '/table',       to: 'goods#index',      via: [:get]
+  match '/create',      to: 'goods#new',        via: [:get]
+  match '/newcategory', to: 'categories#new',   via: [:get]
+ 
+  match '/categories',  to: 'categories#index', via: [:get]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

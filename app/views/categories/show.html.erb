@@ -1,0 +1,25 @@
+<title>
+	<%= @category.name %>
+</title>
+
+<h1> <%= @category.name %></h1>
+
+    <% if @category.goods.any? %>
+     	<h3>Goods (<%= @category.goods.count %>)</h3>
+    <% end %>
+     <% if @category.goods.any? == false %>
+     	<h3>Goods (0)</h3>
+     <% end %>
+      <table align="center">
+      	<tr>
+      		<th>Name</th>
+      		<th>Price</th>
+      	</tr>
+      	<% @category.goods.collect.each do |goods| %>
+      	<tr>
+      		<td><%= goods.name %></td>
+      		<td><%= goods.price %></td>
+      	</tr>
+      	<% end %>
+      </table>     
+    

@@ -5,15 +5,19 @@
 	 <tr id="tr1">
     <th>Name</th>
     <th>Price</th>
+    <th>Category</th>
    </tr>
 
 <% @goods.each do |good| %>
+
   <tr id="tr2">
     <td ><%= good.name %></td>
     <td ><%= good.price %></td>
     <td ><%= link_to 'Destroy', good, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+  <% end %>
+
+
   </table>
  <br />
 

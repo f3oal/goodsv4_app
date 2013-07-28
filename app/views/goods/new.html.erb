@@ -10,6 +10,11 @@
 
       <%= f.label :price %>
       <%= f.text_field :price %>
+
+    
+
+      <%= f.label :category_id %>
+      <%= select_tag( options_for_select(Category.all.collect { |category| [category.name, category.id] }), {:multiple=>true, :size=>5}) %>
       <br/>
       <%= f.submit "Create", class: "btn btn-large btn-primary" %>
     <% end %>

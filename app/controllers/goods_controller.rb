@@ -1,5 +1,5 @@
 class GoodsController < ApplicationController
-  
+  before_action :set_good, only: [:show, :destroy]
 
   # GET /goods
   # GET /goods.json
@@ -14,12 +14,16 @@ class GoodsController < ApplicationController
  def new
    @good = Good.new
  end
+ def show
+   
+ end
  
  
 
   # POST /goods
   # POST /goods.json
   def create
+    
     @good = Good.new(good_params)
     
     if @good.save
@@ -40,10 +44,12 @@ class GoodsController < ApplicationController
 
   private
     
-    
+     def set_good
+      @good = Good.find(params[:id])
+    end
     
     def good_params
-      params.require(:good).permit(:name, :price)
+      params.require(:good).permit(:name, :price, :category_id)
     end
 
 end
