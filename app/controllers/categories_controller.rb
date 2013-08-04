@@ -29,6 +29,9 @@ class CategoriesController < ApplicationController
     @category.destroy
 
     redirect_to categories_path
+    unless @category.destroy 
+      flash[:error] = @сategory.errors.full_messages
+    end
  	end
 
 private
