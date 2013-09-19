@@ -1,0 +1,17 @@
+<%= form_for(@good) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+  <%= f.label :category_id %>
+      <%= f.select :category_id, options_for_select(Category.all.collect { |category| [category.name, category.id] }), {:multiple=>true, :size=>5} %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>

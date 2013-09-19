@@ -1,0 +1,18 @@
+ <% if @cart.cart_items.any? %>
+     	<h3>Goods (<%= @cart.cart_items.count %>)</h3>
+    <% else %>
+     	<h3>Goods (0)</h3>
+     <% end %>
+      <table align="center">
+      	<tr>
+      		<th>Name</th>
+      		<th>Price</th>
+      	</tr>
+      	<% @cart.cart_items.collect.each do |item| %>
+      	<tr>
+      		<td><%= item.good.name %></td>
+      		<td><%= item.good.price %></td>
+          <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+      	</tr>
+      	<% end %>
+      </table>     

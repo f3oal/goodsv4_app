@@ -1,20 +1,25 @@
-<h1>Categories table </h1>
-<br />
+<% provide(:title, 'Categories table') %>
 
+<h1>Categories table</h1>
+<br />
 <table align="center">
-	 <tr id="tr1">
-    <th>Name</th>
+	<tr id="tr1">
+    	<th>Name</th>
     </tr>
 
 <% @categories.each do |category| %>
-  <tr id="tr2">
-    <td ><a href= categories/<%= category.id %>> <%= category.name %></a></td>
-    <td ><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  	<tr id="tr2">
+    	<td >
+    		<a href= categories/<%= category.id %>> <%= category.name %></a>
+    	</td>
+    	<td >
+    		<%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+    		<%= link_to 'Edit',  edit_category_path(category.id) %>
+    	</td>
   	</tr>
 <% end %>
-  </table>
- <br />
-
-<p align="center"> <%= link_to "Create category", newcategory_path, class: "btn btn-large btn-primary" %></p>
+</table>
+<br />
+<p align="center"> <%= link_to "Create category", new_category_path, class: "btn btn-large btn-primary" %></p>
 <br />
 

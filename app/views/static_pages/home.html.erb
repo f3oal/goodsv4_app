@@ -1,2 +1,11 @@
-<h1> Home.html.erb </h1>
-<p> Find me in 'views/static_pages' </p>
+﻿<% provide(:title, 'The shop') %>
+<div  class="centerdiv">
+  <h1>Welcome to  the Shop</h1>
+
+  <h2>
+    This is the best app!
+  </h2>
+
+   <%= link_to "Sign up!", new_user_path, class: "btn btn-large btn-primary" %>
+</div>
+

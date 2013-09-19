@@ -1,13 +1,28 @@
 Goodsv4App::Application.routes.draw do
-  resources :goods, :categories
-
   root 'static_pages#home'
+  
 
-  match '/table',       to: 'goods#index',      via: [:get]
-  match '/create',      to: 'goods#new',        via: [:get]
-  match '/newcategory', to: 'categories#new',   via: [:get]
+  resources :cart
+  post '/cart/:id'                 => 'cart#add_to_cart'
+
+
+  resources :goods
+
+
+  resources :categories
+
+
+  resources :users
+
+
+  resources :sessions 
+    get '/signin'                   => 'sessions#new'
+    delete '/signout'               => 'sessions#destroy'
+
+
+  resources :cart_items
+
  
-  match '/categories',  to: 'categories#index', via: [:get]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -48,7 +63,7 @@ Goodsv4App::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

@@ -1,30 +1,31 @@
-<h1>Goods table </h1>
-<br />
+<% provide(:title, 'Goods table') %>
+<div class="centerdiv">
+  <h1>Goods table </h1>
+  <br />
 
-<table align="center">
-	 <tr id="tr1">
-    <th>Name</th>
-    <th>Price</th>
-    <th>Category</th>
-   </tr>
+  <table align="center">
+    <tr id="tr1">
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+    </tr>
 
-<% @goods.each do |good| %>
+  <% @goods.each do |good| %>
 
-  <tr id="tr2">
-    <td ><%= good.name %></td>
-    <td ><%= good.price %></td>
-<td ><a href= categories/<%= good.category_id %> ><%= good.category_name %></a></td>
-  </td>
-    <td ><%= link_to 'Destroy', good, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <tr id="tr2">
+      <td > <%= good.name %> </td>
+      <td > <%= good.price %> </td>
+      <td > <a href= categories/<%= good.category_id %>> <%= good.category_name %> </a> </td>
+      <td > <%= link_to 'Destroy', good, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+            <%= link_to 'Edit',  edit_good_path(good.id) %> </td>
+      <td>  <%= link_to 'Add to cart', cart_path(good.id), method: :post %> </td>
+    </tr>
   <% end %>
-
-
   </table>
- <br />
-
-<p align="center"> <%= link_to "Create record", create_path, class: "btn btn-large btn-primary" %></p>
-<br />
+  <br />
+  <p > <%= link_to "Create record", new_good_path, class: "btn btn-large btn-primary" %></p>
+  <br />
+</div>
 
 
 

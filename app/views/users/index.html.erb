@@ -1,0 +1,25 @@
+<% provide(:title, 'Users') %>
+<div class="centerdiv">
+  <h1>Users </h1>
+  <br />
+
+  <table align="center">
+    <tr id="tr1">
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+
+  <% @users.each do |user| %>
+
+    <tr id="tr2">
+      <td > <%= user.name %> </td>
+      <td > <%= user.email %> </td>
+      <td > <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+  <br />
+</div>
+
+
+

@@ -5,7 +5,8 @@ describe Category do
 
   it { should respond_to(:name) }
   it { should be_valid }
-
+  
+#name
   it 'should not be valid if name is not present' do	
     subject.name = ''
     subject.should_not be_valid

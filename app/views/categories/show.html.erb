@@ -1,13 +1,10 @@
-<title>
-	<%= @category.name %>
-</title>
+<% provide(:title, @category.name) %>
 
 <h1> <%= @category.name %></h1>
 
     <% if @category.goods.any? %>
      	<h3>Goods (<%= @category.goods.count %>)</h3>
-    <% end %>
-     <% if @category.goods.any? == false %>
+    <% else %>
      	<h3>Goods (0)</h3>
      <% end %>
       <table align="center">
