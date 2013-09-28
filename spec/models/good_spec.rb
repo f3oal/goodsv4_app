@@ -1,43 +1,38 @@
 require 'spec_helper'
 
 describe Good do
-
-  before do
-    @good = Good.new(name: "example", price: 123, category_id: 1)
+  it "is valid with a name,price and category_id" do
+    good = Good.new(
+      name: 'Milk',
+      price: '123',
+      category_id: 1)
+  expect(good).to be_valid
   end
-  subject {@good}
-
-  it { should respond_to(:name)        }
-  it { should respond_to(:price)       }
-  it { should respond_to(:category_id) }
-  it { should be_valid }
-
 
 
 #name
-  it 'should not be valid if name is not present' do	
-    subject.name = ''
-    subject.should_not be_valid
-  end
-  
-  it 'should not be valid if name already taken' do	
-    subject.save
-    good = Good.new(name: "example", price: 123)
-    good.should_not be_valid 
+  it "is invalid without a name" do
+    expect(Good.new(name: '')).to be_invalid
   end
 
+  it "is invalid when name is nill" do
+    expect(Good.new(name: nil)).to be_invalid
+  end
 
 
 #price
-  it 'price should be valid only if greater than 0' do
-    subject.price = -2
-    subject.should_not be_valid    
+  it "is invalid without a price" do
+    expect(Good.new(price: '')).to be_invalid
+  end
+
+  it "is invalid when price is nil" do
+    expect(Good.new(price: nil)).to be_invalid
   end
 
 
-
-#category
-  it { should belong_to(:category)}
-
-  
+#category_id
+  it "is invalid without a category_id" do
+    expect(Good.new(category_id: nil)).to be_invalid
+  end
 end
+

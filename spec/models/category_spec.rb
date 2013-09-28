@@ -1,21 +1,22 @@
 require 'spec_helper'
 
 describe Category do
-  subject { Category.new(name: "Example" ) }
-
-  it { should respond_to(:name) }
-  it { should be_valid }
-  
-#name
-  it 'should not be valid if name is not present' do	
-    subject.name = ''
-    subject.should_not be_valid
+  it 'is valid with a name' do
+    category = Category.new(name: 'glass')
+  expect(category).to be_valid
   end
   
-  it 'should not be valid if name already taken' do	
-    subject.save
-    category = Category.new(name: "Example")
-    category.should_not be_valid 
+#name
+  it 'is invalid without name' do	
+    expect(Category.new(name: '')).to be_invalid
+  end
+  
+  it 'is invalid if name is already taken' do	
+    Category.create(
+      name: 'Dictionary')
+    category = Category.new(
+      name: 'Dictionary')
+    expect(category).to be_invalid
   end
   
   

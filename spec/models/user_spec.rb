@@ -1,82 +1,61 @@
 require 'spec_helper'
 
 describe User do
-
-  before do
-    @user = User.new(name: "Example User", email: "user@example.com", password: "12345678", password_confirmation: "12345678")
+  it "has a valid factory" do
+    expect(create(:user)).to be_valid
+  end
+#password
+  it "is invalid without password" do
+    expect(build(:user, password: '', password_confirmation: '')).to be_invalid
   end
 
-  subject { @user }
-
-  it { should respond_to(:name) }
-  it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-
-  it { should be_valid }
- 
- 
-
- #password
-  it "should not be valid if password is not present" do
-    subject.password = subject.password_confirmation = " " 
-    subject.should_not be_valid
+  it "is invalid when password and password_confirmation are not equal" do
+    expect(build(:user, password: '1234567', password_confirmation: '7654321')).to be_invalid
   end
 
-  it "should not be valid if password doesn't match confirmation" do
-    subject.password_confirmation = "mismatch"
-    subject.should_not be_valid 
+  it "is invalid when password is nil" do
+    expect(build(:user, password: nil, password_confirmation: nil)).to be_invalid
   end
 
-  it "should not be valid if password confirmation is nil" do
-    subject.password_confirmation = nil 
-    subject.should_not be_valid 
+  it "is invalid if password < 6" do
+    expect(build(:user, password: 'ex')).to be_invalid
   end
 
-  it "should not be valid if password < 6" do
-    subject.password = "ex"
-    subject.should_not be_valid
-  end
-
-  it "should not be valid if password > 16" do
-    subject.password = "a" * 17
-    subject.should_not be_valid
+  it "is invalid if password > 16" do
+    expect(build(:user, password: 'a' * 17)).to be_invalid
   end
 
 
 
 #name
-  it "should not be valid if name  already taken" do
-    subject.save
-    user = User.new(name: "Example User", email: "user@example.com", password: 12345678, password_confirmation: 12345678)
-    user.should_not be_valid 
+  it "is invalid if name is already taken" do
+    create(:user, name: "example")
+    user = build(:user, name: "example")
+    expect(user).to have(1).errors_on(:name)
   end
 
-  it "should not be valid if name < 5" do
-    subject.name = "a" * 2
-    subject.should_not be_valid
+  it "is invalid if name < 5" do
+    expect(build(:user, name: "a" * 4)).to be_invalid
   end
 
-  it "should not be valid if name > 13" do
-    subject.name = "a" * 15
-    subject.should_not be_valid
+  it "is invalid if name > 13" do
+    expect(build(:user, name: "a" * 14)).to be_invalid
   end
 
 
 
 #email
-  it "should not be valid if email is not present" do
-    subject.email = ''
-    subject.should_not be_valid
+  it "is invalid without email" do
+    expect(build(:user, email: '')).to be_invalid
   end
 
-  it "should not be valid if email is already taken" do
-    subject.save
-    email = User.new(name: "Example1", email: "user@example.com", password: 12345678, password_confirmation: 12345678)
-    email.should_not be_valid
+  it "is invalid if email is already taken" do
+    create(:user, email: "user@example.com") 
+    email = build(:user, email: "user@example.com")
+    expect(email).to have(1).errors_on(:email)
   end
-
-  
-
 end
+ 
+ 
+
+ 

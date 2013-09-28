@@ -42,6 +42,8 @@ group :test do
   gem 'guard-rspec'
   gem 'capybara'
   gem 'faker'
+  gem 'database_cleaner'
+  gem 'launchy'
   gem 'shoulda-matchers'
   gem 'test_after_commit'
 end

@@ -1,19 +1,19 @@
 require 'spec_helper'
 
 describe CartItem do
-
-  before do
-    @cartitem = CartItem.new(cart_id: 1, good_id: 1)
+  it 'is valid with cart_id and good_id' do
+    expect(CartItem.new(cart_id: 1, good_id: 1)).to be_valid
   end
-
-  subject { @cartitem }
 
 
 
 #good_id
-  it "should not be valid if good_id already taken" do
-    subject.save
-    goodid = CartItem.new(good_id: 1)
-    goodid.should_not be_valid
+  it "is invalid if good_id is already taken" do
+    CartItem.create(
+      cart_id: 1,
+      good_id: 1)
+    goodid = CartItem.new(
+      good_id: 1)
+    expect(goodid).to be_invalid
   end
 end
